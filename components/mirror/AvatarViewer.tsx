@@ -2,7 +2,7 @@
 
 import { Suspense, useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls, useTexture } from "@react-three/drei";
+import { OrbitControls, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { BodyProfile, Product } from "@/lib/types";
 import { getAvatarProportions } from "@/lib/avatarProportions";
@@ -123,7 +123,6 @@ export function AvatarViewer({ profile, product }: { profile: BodyProfile; produ
         <pointLight position={[2, 1, -2]} color="#FF2E9A" intensity={0.8} />
         <Suspense fallback={null}>
           <AvatarMesh profile={profile} product={product} />
-          <Environment preset="city" />
         </Suspense>
         <OrbitControls
           enablePan={false}
