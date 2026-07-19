@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { Showroom } from "@/components/showroom/Showroom";
 import { getProducts } from "@/lib/shopify";
 
