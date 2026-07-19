@@ -4,7 +4,7 @@ import { ProductDetail } from "@/components/collections/ProductDetail";
 import { getProductByHandle, getProducts } from "@/lib/shopify";
 
 export async function generateStaticParams() {
-  const products = await getProducts();
+  const products = await getProducts(); 
   return products.map((p) => ({ handle: p.handle }));
 }
 
