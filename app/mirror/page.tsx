@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { VirtualMirror } from "@/components/mirror/VirtualMirror";
 import { getProducts } from "@/lib/shopify";
 
