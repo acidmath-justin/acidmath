@@ -11,9 +11,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { handle: string };
+  params: Promise<{ handle: string }>;
 }): Promise<Metadata> {
-  const product = await getProductByHandle(params.handle);
+  const { handle } = await params;
+  const product = await getProductByHandle(handle);
   if (!product) return {};
 
   return {
@@ -27,9 +28,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({ params }: { params: { handle: string } }) {
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ handle: string }>;
+}) {
+  const { handle } = await params;
   const [product, allProducts] = await Promise.all([
-    getProductByHandle(params.handle),
+    getProductByHandle(handle),
     getProducts(),
   ]);
 
