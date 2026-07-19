@@ -11,6 +11,7 @@ import { Shelf } from "./Shelf";
 import { SacredGeometry } from "./SacredGeometry";
 import { ParticleField } from "./ParticleField";
 import { PlayerControls } from "./PlayerControls";
+import * as THREE from "three";
 
 export function Scene({ products }: { products: Product[] }) {
   const mannequinProducts = products.filter((p) => p.showroomSlot?.fixture === "mannequin");
@@ -57,7 +58,7 @@ export function Scene({ products }: { products: Product[] }) {
         <Bloom luminanceThreshold={0.25} luminanceSmoothing={0.9} intensity={0.9} mipmapBlur />
         <ChromaticAberration
           blendFunction={BlendFunction.NORMAL}
-          offset={[0.0006, 0.0006]}
+          offset={new THREE.Vector2(0.0006, 0.0006)}
           radialModulation={false}
           modulationOffset={0}
         />
