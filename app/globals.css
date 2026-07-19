@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #7b2ff7 #05050a;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #05050a;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff2e9a, #7b2ff7);
+  border-radius: 4px;
+}
+
+::selection {
+  background: #ff2e9a;
+  color: #05050a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #05050a;
+  color: #f4f1e8;
+}
+
+/* Full-bleed perforated blotter texture used behind hero + section dividers */
+.bg-blotter-perf {
+  background-image: radial-gradient(rgba(244, 241, 232, 0.15) 1px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+/* Respect reduced-motion preferences globally; heavy scenes also check this in JS */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Loading canvas skeleton for dynamically-imported 3D scenes */
+.canvas-skeleton {
+  background: radial-gradient(circle at center, rgba(123, 47, 247, 0.15), transparent 70%), #05050a;
+}

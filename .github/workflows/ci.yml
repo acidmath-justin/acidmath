@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      # No real Shopify credentials here on purpose — the placeholder token
+      # keeps lib/shopify.ts on the mock-data path, so this build never
+      # depends on network access or real store secrets.
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SHOPIFY_DOMAIN: placeholder.myshopify.com
+          NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN: your-storefront-api-token
+          NEXT_PUBLIC_SITE_URL: https://acidmath.com
